@@ -8,7 +8,7 @@ public class AppConstants {
 	public static final int MEDIUM_DEFAULT_TIMEOUT = 10;
 	public static final int LONG_DEFAULT_TIMEOUT = 15;
 	
-	public static final String LOGIN_PAGE_TITTLE = "Account Login12";
+	public static final String LOGIN_PAGE_TITTLE = "Account Login15";
 	public static final String HOME_PAGE_TITTLE = "My Account11";
 	
 	public static final String LOGIN_PAGE_FRACTION_URL = "route=account/login";
