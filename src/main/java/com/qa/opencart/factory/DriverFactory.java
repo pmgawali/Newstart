@@ -1,10 +1,13 @@
 package com.qa.opencart.factory;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -18,7 +21,8 @@ public class DriverFactory {
 	WebDriver driver;
 	public Properties prop;
 	OptionsManager optionsManager;
-	
+	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
+		
 	public static String highlight;
 	
 	public WebDriver initDriver(Properties prop) {
@@ -32,27 +36,36 @@ public class DriverFactory {
 
 		switch (browserName.toLowerCase().trim()) {
 		case "chrome":
-			driver = new ChromeDriver(optionsManager.getChromeOptions());
+			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
 			break;
 		case "edge":
-			driver = new EdgeDriver();
+			tlDriver.set(new EdgeDriver(optionsManager.getEdgeOptions()));
 			break;
-		case "FireFox":
-			driver = new FirefoxDriver();
+		case "firefox":
+			tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
 			break;
 		case "safari":
-			driver = new SafariDriver();
+			tlDriver.set(new SafariDriver());
 			break;
 		default:
-			System.out.println("Please pass the correct browser" + browserName);
-			throw new BrowserException("=======Invalid Browser=========");
+			System.out.println("plz pass the valid browser name..." + browserName);
+			//log.error("Plz pass the valid browser name..." + browserName);
+			throw new BrowserException("===INVALID BROWSER===");
 		}
-		driver.get(prop.getProperty("url"));
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
 
-		return driver;
+		getDriver().get(prop.getProperty("url"));// login page url
+		getDriver().manage().window().maximize();
+		getDriver().manage().deleteAllCookies();
+		return getDriver();
 	}
+	/**
+	 * getDriver: get the local thready copy of the driver
+	 */
+
+	public static WebDriver getDriver() {
+		return tlDriver.get();
+	}
+
 // This is initialise to config properties
 	public Properties initProp() {
 		prop = new Properties();
@@ -69,5 +82,23 @@ public class DriverFactory {
 			e.printStackTrace();
 		}
 		return prop;
+	}
+	/**
+	 * takescreenshot
+	 */
+
+	public static File getScreenshotFile() {
+		File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);// temp dir
+		return srcFile;
+	}
+
+	public static byte[] getScreenshotByte() {
+		return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);// temp dir
+
+	}
+
+	public static String getScreenshotBase64() {
+		return ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BASE64);// temp dir
+
 	}
 }
