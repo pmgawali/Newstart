@@ -11,6 +11,14 @@
 	<name>Framework2025</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+		<aspectj.version>1.9.24</aspectj.version>
+		<selenium.version>4.31.0</selenium.version>
+	</properties>
 
 	<dependencies>
 	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
@@ -143,8 +151,18 @@
 						  <suiteXmlFile>src/test/resources/testrunners/testng_regression.xml</suiteXmlFile>  
 						
 					</suiteXmlFiles>
-
+				<argLine>
+						-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+					</argLine>
 				</configuration>
+				
+				<dependencies>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjweaver</artifactId>
+						<version>${aspectj.version}</version>
+					</dependency>
+				</dependencies>
 
 
 			</plugin>

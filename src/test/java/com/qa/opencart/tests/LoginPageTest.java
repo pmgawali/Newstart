@@ -1,14 +1,29 @@
 package com.qa.opencart.tests;
 
+import static com.qa.opencart.constants.AppConstants.HOME_PAGE_TITTLE;
+import static com.qa.opencart.constants.AppConstants.LOGIN_PAGE_FRACTION_URL;
+import static com.qa.opencart.constants.AppConstants.LOGIN_PAGE_TITTLE;
+
 //import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import static com.qa.opencart.constants.AppConstants.*;
+
 import com.qa.opencart.base.BaseTest;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
+@Feature("F:50")
+@Epic("Epic 100:design Login page for open cart app")
+@Story("US:100")
 public class LoginPageTest extends BaseTest {
 
-	@Test
+	@Description("Checking Login page tittle....")
+	@Severity(SeverityLevel.MINOR)
+	@Test(description="Checking Login page tittle")
 	public void loginPageTittleTest() {
 		String actTittle = loginPage.getLoginPageTittle();
 		System.out.println(actTittle);
