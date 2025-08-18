@@ -48,4 +48,7 @@ public class LoginPageTest extends BaseTest {
 		Assert.assertEquals(accPage.getAccPageTitle(), HOME_PAGE_TITTLE);
 	
 	}
+	
+	
+	
 }

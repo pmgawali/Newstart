@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 
@@ -19,7 +20,7 @@ import com.qa.opencart.pages.SearchResultsPage;
 @Listeners(ChainTestListener.class)
 public class BaseTest {
 
-	protected WebDriver driver;
+	 WebDriver driver;
 	DriverFactory df;
 	protected Properties prop;
 
@@ -45,12 +46,11 @@ public class BaseTest {
 		}
 	}
 	
-	
-	
-	
-//	@AfterTest
-//	public void tearDown() {
-//		// driver.quit();
-//	}
+	@AfterTest
+	public void tearDown() {
+		// driver.quit();
+		 driver.close();
+		 
+	}
 
 }
