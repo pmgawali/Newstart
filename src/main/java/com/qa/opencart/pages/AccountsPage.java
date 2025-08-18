@@ -1,14 +1,17 @@
 package com.qa.opencart.pages;
 
+import static com.qa.opencart.constants.AppConstants.DEFAULT_TIMEOUT;
+import static com.qa.opencart.constants.AppConstants.HOME_PAGE_FRACTION_URL;
+import static com.qa.opencart.constants.AppConstants.HOME_PAGE_TITTLE;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.qa.opencart.utils.ElementUtil;
-import static com.qa.opencart.constants.AppConstants.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AccountsPage {
 	private WebDriver driver;

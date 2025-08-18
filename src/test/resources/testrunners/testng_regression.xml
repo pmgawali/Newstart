@@ -3,9 +3,9 @@
 	
 	<!--<listeners>
 	<listener class-name = "com.avenstack.chaintest.plugins.ChainTestListener" />
-	<listener class-name = "com.qa.opencart.listeners.TestAllureListener" />
+	<listener class-name = "com.qa.opencart.listeners.TestAllureListener" />	
+	</listene-->
 	
-	</listeners>-->
 	
 	
 	<test name="Login Page Test_chrome">

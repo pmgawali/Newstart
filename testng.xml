@@ -3,11 +3,11 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.qa.opencart.tests.RegisterPageTest"/>
+    <class name="com.qa.opencart.tests.LoginPageTest"/>
+   <class name="com.qa.opencart.tests.AccountPageTest"/>
+      <!-- <class name="com.qa.opencart.tests.RegisterPageTest"/>
       <class name="com.qa.opencart.tests.ProductInfoPageTest"/>
-      <class name="com.qa.opencart.tests.AccountPageTest"/>
-      <class name="com.qa.opencart.tests.LoginPageTest"/>
-      <class name="com.qa.opencart.tests.SearchTest"/>
+       <class name="com.qa.opencart.tests.SearchTest"/>-->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
