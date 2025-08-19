@@ -14,8 +14,8 @@
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>21</maven.compiler.source>
-		<maven.compiler.target>21</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 		<aspectj.version>1.9.19</aspectj.version>
 		<selenium.version>4.35.0</selenium.version>
 	</properties>
@@ -85,6 +85,11 @@
 
 		<dependency>
 			<groupId>com.aventstack</groupId>
+			<artifactId>chaintest-core</artifactId>
+			<version>1.0.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aventstack</groupId>
 			<artifactId>chaintest-testng</artifactId>
 			<version>1.0.12</version>
 		</dependency>
@@ -147,7 +152,7 @@
 					<forkCount>3</forkCount>
 					<reuseForks>true</reuseForks>
 					<suiteXmlFiles>
-						 <!-- <suiteXmlFile>src/test/resources/testrunners/testng_regression.xml</suiteXmlFile> --> 
+						 <suiteXmlFile>src/test/resources/testrunners/testng_regression.xml</suiteXmlFile> 
 						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
 					<argLine>
