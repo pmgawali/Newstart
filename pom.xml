@@ -130,6 +130,8 @@
 
 	<build>
 
+
+
 		<plugins>
 
 			<plugin>
@@ -152,7 +154,7 @@
 					<forkCount>3</forkCount>
 					<reuseForks>true</reuseForks>
 					<suiteXmlFiles>
-						 <suiteXmlFile>src/test/resources/testrunners/testng_regression.xml</suiteXmlFile> 
+						 <suiteXmlFile>src\test\resources\testrunners\testng_regression.xml</suiteXmlFile>
 						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
 					<argLine>
@@ -205,6 +207,7 @@
 			
 
 		</plugins>
-
 	</build>
+
 </project>
+
