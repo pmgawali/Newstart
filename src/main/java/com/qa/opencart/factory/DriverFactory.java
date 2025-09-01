@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.util.Properties;
 
 import org.openqa.selenium.OutputType;
@@ -12,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import com.qa.opencart.exceptions.BrowserException;
@@ -25,6 +29,7 @@ public class DriverFactory {
 		
 	public static String highlight;
 	
+	@SuppressWarnings("deprecation")
 	public WebDriver initDriver(Properties prop) {
 
 		String browserName = prop.getProperty("browser");
@@ -36,7 +41,22 @@ public class DriverFactory {
 
 		switch (browserName.toLowerCase().trim()) {
 		case "chrome":
-			tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+			if(Boolean.parseBoolean(prop.getProperty("remote"))){
+				//run on some other machine/aws/selenium grid
+				try {
+					tlDriver.set(
+							new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.getChromeOptions()));
+				} catch (MalformedURLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+				else {
+					tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
+				
+				}
+			
+			
 			break;
 		case "edge":
 			tlDriver.set(new EdgeDriver(optionsManager.getEdgeOptions()));
